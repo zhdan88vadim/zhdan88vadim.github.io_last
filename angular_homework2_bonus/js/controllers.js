@@ -11,6 +11,10 @@ managerControllers.controller('ManagerListCtrl',
 
 function managerListCtrl ($scope, $q, $location, $userService, $filter, uiGridConstants) {
 
+	function GridRefreshf() {
+		$scope.gridApi.grid.refresh();
+	}
+
 	$scope.phoneTypes = [
 	{ name: 'home', label: 'Home Phone Number'}, 
 	{name: 'fax', label: 'Fax Number'}];
@@ -18,7 +22,10 @@ function managerListCtrl ($scope, $q, $location, $userService, $filter, uiGridCo
 	$scope.selectPhoneType = $scope.phoneTypes[0];
 
 	$scope.$watch('searchText', function(newValue, oldValue) {
-		$scope.gridApi.grid.refresh();
+		GridRefreshf();
+	});
+	$scope.$watch('selectPhoneType', function(newValue, oldValue) {
+		GridRefreshf();
 	});
 
 	$scope.gridOptions = {
