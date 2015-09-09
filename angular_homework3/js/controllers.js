@@ -23,10 +23,8 @@ function personDetailCtrl($scope, $q, $location, $userService, $filter, $routePa
 	$scope.person = $userService.getById($routeParams.personId);
 	
 	if (!$scope.person) {
-		if (!$scope.person) {
-			$scope.personfullName = 'Warning! User Not Found!';
-			return;
-		}
+		$scope.personfullName = 'Warning! User Not Found!';
+		return;
 	}
 
 	$scope.personfullName = $scope.person.firstName + ' ' + $scope.person.lastName;
