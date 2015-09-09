@@ -49,7 +49,7 @@ function mainCtrl ($scope, $q, $location, $userService, $filter) {
 		$scope.isShowContent = !$scope.isShowContent;
 	}
 
-	$scope.isShowContent = false; // ------- warning! default -> false
+	$scope.isShowContent = true; // ------- warning! default -> false
 }
 
 
