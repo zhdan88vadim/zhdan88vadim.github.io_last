@@ -1,0 +1,132 @@
+'user strict';
+
+var managerControllers = angular.module('managerControllers', []);
+
+
+/* Controller - PersonDetailCtrl */
+
+managerControllers.controller('PersonDetailCtrl', 
+	['$scope', '$q', '$location', '$userService', '$filter', '$routeParams', personDetailCtrl]);
+
+function getPhone(phones, type) {
+	for (var i = 0; i < phones.length; ++i) {
+		if(phones[i].type === type) {
+			return phones[i];
+		}
+	}
+}
+
+function personDetailCtrl($scope, $q, $location, $userService, $filter, $routeParams) {
+
+	$scope.back = function() {
+		$location.path('/');
+	}
+
+	$scope.person = $userService.getById($routeParams.personId);
+	
+	if (!$scope.person) {
+		$scope.personfullName = 'Warning! User Not Found!';
+		return;
+	}
+
+	$scope.personfullName = $scope.person.firstName + ' ' + $scope.person.lastName;
+	$scope.personHomePhone = $filter('phoneNumber')($scope.person.phoneNumber, { type: 'home' });
+	$scope.personFaxPhone = $filter('phoneNumber')($scope.person.phoneNumber, { type: 'fax' });
+
+	$scope.personUpdate = function() {
+		var homePhone = getPhone($scope.person.phoneNumber, 'home');
+		var faxPhone = getPhone($scope.person.phoneNumber, 'fax');
+	
+		homePhone.number = $scope.personHomePhone;
+		faxPhone.number = $scope.personFaxPhone;
+
+		$userService.update($scope.person);
+		$location.path('/');
+	}
+}
+
+
+/* Controller - TestPhoneDerectiveCtrl */
+
+managerControllers.controller('TestPhoneDerectiveCtrl', 
+	['$scope', '$q', '$location', '$userService', '$filter', testPhoneDerectiveCtrl]);
+
+function testPhoneDerectiveCtrl ($scope, $q, $location, $userService, $filter) {
+	$scope.personFaxPhone = '111-222-4444';
+
+	$scope.back = function() {
+		$location.path('/');
+	}
+}
+
+
+/* Controller - MainCtrl */
+
+managerControllers.controller('MainCtrl', 
+	['$scope', '$q', '$location', '$userService', '$filter', mainCtrl]);
+
+function mainCtrl ($scope, $q, $location, $userService, $filter) {
+
+	$scope.toogleShowContent = function() {
+		$scope.isShowContent = !$scope.isShowContent;
+	}
+
+	$scope.isShowContent = true;
+}
+
+
+/* Controller - ManagerListCtrl */
+
+managerControllers.controller('ManagerListCtrl', 
+	['$scope', '$q', '$location', '$userService', '$filter', managerListCtrl]);
+
+function managerListCtrl ($scope, $q, $location, $userService, $filter) {
+
+	$scope.order = function(predicate) {
+		$scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+		$scope.predicate = predicate;
+	}
+
+	$scope.showModal = false;
+	$scope.dialog = {};
+
+	$scope.editPerson = function(person, $event) {
+		$event.stopPropagation();
+
+		var personFullName = person.firstName + ' ' + person.lastName;
+		var phoneHome = $filter('phoneNumber')(person.phoneNumber, { type: 'home' });
+		var phoneFax = $filter('phoneNumber')(person.phoneNumber, { type: 'fax' });
+
+		$scope.dialog.age = person.age;
+		$scope.dialog.street = person.address.streetAddress;
+		$scope.dialog.city = person.address.city;
+		$scope.dialog.state = person.address.state;
+		$scope.dialog.postalCode = person.address.postalCode;
+		$scope.dialog.homeNumber = phoneHome;
+		$scope.dialog.faxNumber = phoneFax;
+		$scope.dialog.header = personFullName;
+		$scope.personFullName = personFullName;
+
+		$scope.showModal = true;
+		
+	};
+
+	$scope.testFunct = function(param) {
+		console.log('testFunct with param: ' + param);
+	};
+	$scope.updateLastViewed = function() {
+		$scope.lastViewedPerson = 'Last viewed: ' + $scope.personFullName;
+		$scope.showModal = false;
+	};
+
+	$scope.predicate = 'name';
+	$scope.reverse = false;
+
+	$scope.phoneTypes = [
+	{ type: 'home', label: 'Home Phone Number'}, 
+	{ type: 'fax', label: 'Fax Number'}];
+
+	$scope.selectPhoneType = $scope.phoneTypes[0];
+
+	$scope.persons = $userService.getUsers();
+}
