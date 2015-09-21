@@ -40,117 +40,117 @@ managerServices.service('$userService', ['$q', '$http', '$promiseFactory',
 
 
 		var data = [
-		    {
-		      "id": 13457,
-		      "firstName": "John",
-		      "lastName": "Smith",
-		      "age": 23,
-		      "address": {
-		        "streetAddress": "3434",
-		        "city": "New Yorksdfs",
-		        "state": "123 123",
-		        "postalCode": "44444"
-		      },
-		      "phoneNumber": [
-		        {
-		          "type": "fax",
-		          "number": "232-232-4455"
-		        },
-		        {
-		          "type": "home",
-		          "number": "234-234 0222"
-		        }
-		      ]
-		    },
-		    {
-		      "id": 123,
-		      "firstName": "Test",
-		      "lastName": "Mor",
-		      "age": 123,
-		      "address": {
-		        "streetAddress": "3 Dr",
-		        "city": "Ashland",
-		        "state": "OH",
-		        "postalCode": "448"
-		      },
-		      "phoneNumber": [
-		        {
-		          "type": "fax",
-		          "number": "419-800-2343"
-		        },
-		        {
-		          "type": "home",
-		          "number": "419-232-2343"
-		        }
-		      ]
-		    },
-		    {
-		      "id": 323,
-		      "firstName": "Simo",
-		      "lastName": "Moras",
-		      "age": 32,
-		      "address": {
-		        "streetAddress": "3 Mcauley",
-		        "city": "Ashlandd",
-		        "state": "OH",
-		        "postalCode": "44809"
-		      },
-		      "phoneNumber": [
-		        {
-		          "type": "fax",
-		          "number": "419-800-6759"
-		        },
-		        {
-		          "type": "home",
-		          "number": "419-503-3454"
-		        }
-		      ]
-		    },
-		    {
-		      "id": 76578,
-		      "firstName": "Simona",
-		      "lastName": "Morasca",
-		      "age": 34,
-		      "address": {
-		        "streetAddress": "test street",
-		        "city": "test city",
-		        "state": "state",
-		        "postalCode": "44805"
-		      },
-		      "phoneNumber": [
-		        {
-		          "type": "fax",
-		          "number": "419-800-1212"
-		        },
-		        {
-		          "type": "home",
-		          "number": "419-503-0033"
-		        }
-		      ]
-		    },
-		    {
-		      "id": 12583,
-		      "firstName": "Josephine",
-		      "lastName": "Darakjy",
-		      "age": 33,
-		      "address": {
-		        "streetAddress": "4 B Blue Ridgde Blvd",
-		        "city": "Brightonw",
-		        "state": "asdasdas",
-		        "postalCode": "48116"
-		      },
-		      "phoneNumber": [
-		        {
-		          "type": "fax",
-		          "number": "602-919-4333"
-		        },
-		        {
-		          "type": "home",
-		          "number": "973-605-6433"
-		        }
-		      ]
-		    }
-		  ];
+		{
+			"id": 13457,
+			"firstName": "John",
+			"lastName": "Smith",
+			"age": 23,
+			"address": {
+				"streetAddress": "3434",
+				"city": "New Yorksdfs",
+				"state": "123 123",
+				"postalCode": "44444"
+			},
+			"phoneNumber": [
+			{
+				"type": "fax",
+				"number": "232-232-4455"
+			},
+			{
+				"type": "home",
+				"number": "234-234 0222"
+			}
+			]
+		},
+		{
+			"id": 123,
+			"firstName": "Test",
+			"lastName": "Mor",
+			"age": 123,
+			"address": {
+				"streetAddress": "3 Dr",
+				"city": "Ashland",
+				"state": "OH",
+				"postalCode": "448"
+			},
+			"phoneNumber": [
+			{
+				"type": "fax",
+				"number": "419-800-2343"
+			},
+			{
+				"type": "home",
+				"number": "419-232-2343"
+			}
+			]
+		},
+		{
+			"id": 323,
+			"firstName": "Simo",
+			"lastName": "Moras",
+			"age": 32,
+			"address": {
+				"streetAddress": "3 Mcauley",
+				"city": "Ashlandd",
+				"state": "OH",
+				"postalCode": "44809"
+			},
+			"phoneNumber": [
+			{
+				"type": "fax",
+				"number": "419-800-6759"
+			},
+			{
+				"type": "home",
+				"number": "419-503-3454"
+			}
+			]
+		},
+		{
+			"id": 76578,
+			"firstName": "Simona",
+			"lastName": "Morasca",
+			"age": 34,
+			"address": {
+				"streetAddress": "test street",
+				"city": "test city",
+				"state": "state",
+				"postalCode": "44805"
+			},
+			"phoneNumber": [
+			{
+				"type": "fax",
+				"number": "419-800-1212"
+			},
+			{
+				"type": "home",
+				"number": "419-503-0033"
+			}
+			]
+		},
+		{
+			"id": 12583,
+			"firstName": "Josephine",
+			"lastName": "Darakjy",
+			"age": 33,
+			"address": {
+				"streetAddress": "4 B Blue Ridgde Blvd",
+				"city": "Brightonw",
+				"state": "asdasdas",
+				"postalCode": "48116"
+			},
+			"phoneNumber": [
+			{
+				"type": "fax",
+				"number": "602-919-4333"
+			},
+			{
+				"type": "home",
+				"number": "973-605-6433"
+			}
+			]
+		}
+		];
 
 
 		function getRawPersonById(id) {
