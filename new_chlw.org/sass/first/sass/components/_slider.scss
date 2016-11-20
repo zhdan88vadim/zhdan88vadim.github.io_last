@@ -24,9 +24,10 @@ li.bjqs-slide {
   position: absolute;
   display: none;
   list-style: none;
-  height: 99% !important;
-  width: 99.5% !important;
-  //width: 100% !important;
+  //height: 99% !important;
+  //width: 99.5% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 ul.bjqs-controls {
@@ -111,7 +112,7 @@ ul.bjqs-controls.v-centered li a:hover {
 
 .fpimg {
   width: 100% !important;
-  height: 380px;
+  //height: 380px;
 }
 
 ol.bjqs-markers li a {
