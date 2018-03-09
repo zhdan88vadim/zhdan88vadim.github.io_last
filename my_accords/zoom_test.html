@@ -15,6 +15,7 @@
 
         .textofsong {
             font-size: 40px;
+            line-height: 40px;
         }
 
         .textofsong div:nth-child(odd) {
@@ -30,8 +31,14 @@
 
 <body>
 
-    <a href="" class="change-font-size" data-value="10">+ text size</a>
-    <a href="" class="change-font-size" data-value="-10">- text size</a>
+    <a href="" class="change-font-size" data-value="8">+ text size</a>
+    <a href="" class="change-font-size" data-value="-8">- text size</a>
+    <br>
+    <a href="" class="change-line-height" data-value="8">+ line-height</a>
+    <a href="" class="change-line-height" data-value="-8">- line-height</a>
+
+    <br>
+    <br>
 
     <div class="textofsong">
         <span>Куплет:</span>
@@ -107,6 +114,17 @@
         t = t.replace("px", "");
         t = 1 * t + 1 * value + "px";
         $(".textofsong").css("font-size", t);
+    });
+
+    $(".change-line-height").click(function (event) {
+        event.preventDefault();
+
+        let t = $(".textofsong").css("line-height");
+        let value = $(this).attr("data-value");
+
+        t = t.replace("px", "");
+        t = 1 * t + 1 * value + "px";
+        $(".textofsong").css("line-height", t);
     });
 
 </script>
