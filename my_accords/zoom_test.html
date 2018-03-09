@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        .accords {
+            font-weight: bold;
+        }
+
+        .textofsong {
+            font-size: 40px;
+        }
+
+        .textofsong div:nth-child(odd) {
+            background: #f2f6f8;
+        }
+
+        .textofsong div:nth-child(even) {
+            background: #f8e3d5;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <a href="" class="change-font-size" data-value="10">+ text size</a>
+    <a href="" class="change-font-size" data-value="-10">- text size</a>
+
+    <div class="textofsong">
+        <span>Куплет:</span>
+        <div>
+            Cm D# H Cm
+        </div>
+        <div>
+            D#
+        </div>
+        <div>
+            Fm Gm Cm
+        </div>
+        <div>
+            Cm D# Cm
+        </div>
+        <div>
+            D# Cm
+        </div>
+        <div>
+            Fm Gm Cm
+        </div>
+        <div>
+            .
+        </div>
+        <div>
+            Припев:
+        </div>
+        <div>
+            D# Cm
+        </div>
+        <div>
+            Fm Gm Cm
+        </div>
+
+    </div>
+
+    <!-- <div class="accords">Am F Dm E (E7)</div>
+
+    <pre>Осень. В небе жгут корабли</pre>
+
+    <div class="accords">Am F Dm E (E7)</div>
+
+    Осень. Мне бы прочь от земли Dm E (E7) Am F Там, где в море тонет печаль Dm E (E7) Осень, темная даль.
+
+    <pre>
+    Припев:
+	<b>Am</b>        <b>F</b>     <b>Dm</b>       <b>E</b> (<b>E7)</b>
+	Осень. В небе жгут корабли
+	<b>Am</b>       <b>F</b>      <b>Dm</b>         <b>E</b> (<b>E7)</b>
+	Осень. Мне бы прочь от земли
+	 <b>Dm</b>         <b>E</b> (<b>E7)</b> <b>Am</b>      <b>F</b>
+	Там, где в море тонет печаль
+	<b>Dm</b>             <b>E</b> (<b>E7)</b>
+    Осень, темная даль. -->
+
+    </pre>
+
+
+    <!-- внутри контейнера <pre> допустимо применять 
+        любые теги кроме следующих: <big>, <img>, <object>, <small>, <sub> и <sup>. -->
+
+</body>
+
+
+<script>
+
+    $(".change-font-size").click(function (event) {
+        event.preventDefault();
+
+        let t = $(".textofsong").css("font-size");
+        let value = $(this).attr("data-value");
+
+        t = t.replace("px", "");
+        t = 1 * t + 1 * value + "px";
+        $(".textofsong").css("font-size", t);
+    });
+
+</script>
+
+
+
+</html>
