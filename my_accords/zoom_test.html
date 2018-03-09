@@ -9,14 +9,20 @@
     <title>Document</title>
 
     <style>
-        .accords {
-            font-weight: bold;
-        }
-
         .textofsong {
             font-family: monospace;
             font-size: 40px;
-            line-height: 40px;
+            line-height: 34px;
+        }
+
+        .textofsong .info {
+            font-size: 20px;
+            line-height: 18px;
+        }
+
+        .textofsong .space {
+            height: 30px;
+            background: #fff !important;
         }
 
         .textofsong div:nth-child(odd) {
@@ -24,7 +30,7 @@
         }
 
         .textofsong div:nth-child(even) {
-            background: #f8e3d5;
+            background: #eb656529;
         }
     </style>
 
@@ -32,17 +38,18 @@
 
 <body>
 
-    <a href="" class="change-font-size" data-value="8">+ text size</a>
-    <a href="" class="change-font-size" data-value="-8">- text size</a>
+    <a href="" class="change-font-size" data-value="5">+ text size</a>
+    <a href="" class="change-font-size" data-value="-5">- text size</a>
     <br>
-    <a href="" class="change-line-height" data-value="8">+ line-height</a>
-    <a href="" class="change-line-height" data-value="-8">- line-height</a>
+    <br>
+    <a href="" class="change-line-height" data-value="5">+ line-height</a>
+    <a href="" class="change-line-height" data-value="-5">- line-height</a>
 
     <br>
     <br>
 
     <div class="textofsong">
-        <span>Куплет:</span>
+        <div class="info">Куплет:</div>
         <div>
             Cm D# H Cm
         </div>
@@ -61,12 +68,28 @@
         <div>
             Fm Gm Cm
         </div>
+        <div class="space"></div>
+
+        <div class="info"> Припев: </div>
         <div>
-            .
+            D# Cm
         </div>
         <div>
-            Припев:
+            Fm Gm Cm
         </div>
+        <div>
+            Cm D# Cm
+        </div>
+        <div>
+            D# Cm
+        </div>
+        <div>
+            Fm Gm Cm
+        </div>
+
+        <div class="space"></div>
+
+        <div class="info"> Концовка: </div>
         <div>
             D# Cm
         </div>
@@ -110,11 +133,14 @@
         event.preventDefault();
 
         let t = $(".textofsong").css("font-size");
-        let value = $(this).attr("data-value");
+        let delta = $(this).attr("data-value");
 
-        t = t.replace("px", "");
-        t = 1 * t + 1 * value + "px";
-        $(".textofsong").css("font-size", t);
+        let intValue = t.replace("px", "") * 1 + 1 * delta;
+
+        $(".textofsong").css("font-size", intValue + "px");
+
+        $(".textofsong .info").css("font-size", intValue - 20 + "px");
+        $(".textofsong .info").css("line-height", intValue - 20 + "px");
     });
 
     $(".change-line-height").click(function (event) {
@@ -126,6 +152,8 @@
         t = t.replace("px", "");
         t = 1 * t + 1 * value + "px";
         $(".textofsong").css("line-height", t);
+
+        $(".textofsong .space").css("height", t);
     });
 
 </script>
